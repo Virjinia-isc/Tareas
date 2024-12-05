@@ -37,12 +37,11 @@ const botonAgregar = document.querySelector("#botonAgregar");
 const check = "bi-record-circle";
 const tachado = "tachado";
 const uncheck = "bi-circle";
-
 let LIST;
 let id;
 
 const FECHA = new Date();
-fecha.innerHTML = fecha.toLocaleDateString("es-MX", {
+fecha.innerHTML = FECHA.toLocaleDateString("es-MX", {
   weekday: "long",
   month: "short",
   day: "numeric",
@@ -56,9 +55,10 @@ function agregarTarea(tarea, id, hecho, eliminar) {
   const LINE = hecho ? tachado : "";
   const elemento = ` <li id="elemento">
     <i id="${id}" data="hecho" class="bi ${realizado}"></i>
-    <p class="tarea-lista ${LINE}">${tarea}</p>
-    <i id="${id}" data="eliminar" class="bi bi-x"></i> 
-</li>`;
+    <p class="tarea-lista text ${LINE}">${tarea}</p>
+    <i id="${id}" data="eliminar" class="bi bi-x"></i>
+</li> `;
+  lista.insertAdjacentHTML("beforeend", elemento);
 }
 
 function tareaRealizada(element) {
@@ -67,10 +67,8 @@ function tareaRealizada(element) {
   element.parentNode.querySelector(".text").classlist.toggle(tachado);
   LIST[element.id].realizado = LIST[element.id].realizado ? false : true;
 }
-
 function tareaEliminada(element) {
   element.parentNode.parentNode.removeChild(element.parentNode);
-
   LIST[element.id].eliminar = true;
 }
 botonAgregar.addEventListener("click", () => {
