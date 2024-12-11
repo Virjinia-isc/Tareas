@@ -51,20 +51,21 @@ function agregarTarea(tarea, id, hecho, eliminar) {
   if (eliminar) {
     return;
   }
+
   const realizado = hecho ? check : uncheck;
   const LINE = hecho ? tachado : "";
-  const elemento = ` <li id="elemento">
-    <i id="${id}" data="hecho" class="bi ${realizado}"></i>
-    <p class="tarea-lista text ${LINE}">${tarea}</p>
-    <i id="${id}" data="eliminar" class="bi bi-x"></i>
-</li> `;
+  const elemento = `<li id="elemento">
+  <i id="${id}" data="hecho" class="bi ${realizado}"></i>
+  <p class="tarea-lista text ${LINE}">${tarea}</p>
+  <i id="${id}" data="eliminar" class="bi bi-x"></i>
+  </li> `;
   lista.insertAdjacentHTML("beforeend", elemento);
 }
 
 function tareaRealizada(element) {
-  element.classlist.toggle(check);
-  element.classlist.toggle(uncheck);
-  element.parentNode.querySelector(".text").classlist.toggle(tachado);
+  element.classList.toggle(check);
+  element.classList.toggle(uncheck);
+  element.parentNode.querySelector(".text").classList.toggle(tachado);
   LIST[element.id].realizado = LIST[element.id].realizado ? false : true;
 }
 function tareaEliminada(element) {
@@ -86,6 +87,7 @@ botonAgregar.addEventListener("click", () => {
     input.value = "";
   }
 });
+
 lista.addEventListener("click", function (event) {
   const element = event.target;
   const elementData = element.attributes.data.value;

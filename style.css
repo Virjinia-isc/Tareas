@@ -1,11 +1,15 @@
 :root{
-    --color-primario: #9dab34;
-    --color-secundario: #63b397;
-    --color-bg: #a2e5d2;
-    --bg: #fffab3;
+    --color-primario: #f07c19;
+    --color-secundario: #ffc422;
+    --color-bg: #eaf27e;
+    --bg: #dcff69;
     --text-size: 1.5rem;
-    --color-text: #2c2321;
-
+    --color-text: #f33653;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 body{
     font-family: "Parkinsans", serif;
@@ -79,5 +83,5 @@ body{
 }
 .tachado{
     text-decoration: line-through;
-    color: #63b397;
+    color: #efd8ef;
 }
